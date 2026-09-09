@@ -173,10 +173,12 @@
     .flow p { margin-top: 4px; font-size: .85rem; color: var(--cp-text-soft); }
     .visual-footer { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--cp-border); color: var(--cp-text-soft); }
     .work-footnote { margin-top: 24px; font-size: .875rem; color: var(--cp-text-soft); }
-    .recognition { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 40px; }
-    .recognition article { padding: 24px 0; border-top: 1px solid var(--cp-border-strong); }
-    .recognition h3 { margin: 12px 0 8px; font-size: 1.2rem; }
-    .recognition p { color: var(--cp-text-soft); font-size: .85rem; }
+    .recognition { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .recognition article { padding: 28px; border: 1px solid var(--cp-border); border-top: 3px solid var(--cp-accent); border-radius: 16px; background: var(--cp-bg-elevated); }
+    .recognition h3 { margin: 24px 0 16px; min-height: 3.6rem; font-size: 1.6rem; }
+    .recognition p { color: var(--cp-text-soft); font-size: .95rem; }
+    .recognition .recognition-signal { color: var(--cp-accent); font-size: 1.05rem; font-weight: 600; line-height: 1.4; margin-bottom: 16px; }
+    .recognition-link { margin-top: 24px; }
     .human { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
     .human h2 { margin-top: 20px; }
     .human p { color: var(--cp-text-soft); margin-top: 24px; }
@@ -240,9 +242,9 @@
       .story-card { padding-right: 0; }
       .project { padding: 24px; }
       .project h3 { font-size: 2rem; }
-      .recognition { grid-template-columns: 1fr; gap: 0; margin-top: 32px; }
-      .recognition article { padding-block: 20px; }
-      .recognition h3 { margin-top: 8px; }
+      .recognition { grid-template-columns: 1fr; gap: 20px; }
+      .recognition article { padding: 24px; }
+      .recognition h3 { margin-top: 20px; min-height: 0; }
       .human { gap: 32px; }
       .human-card { padding: 24px; }
       .contact-section { padding-block: 56px; }
@@ -285,7 +287,7 @@
       <nav class="desktop-nav" aria-label="Main navigation">
         <a href="#story">My story</a>
         <a href="#work">Selected work</a>
-        <a href="#beyond">Beyond work</a>
+        <a href="#recognition">Recognition</a>
         <a class="nav-contact" href="#contact">Let's connect <span aria-hidden="true">&nearr;</span></a>
       </nav>
       <div class="header-tools">
@@ -295,6 +297,7 @@
           <nav aria-label="Mobile navigation">
             <a href="#story">My story</a>
             <a href="#work">Selected work</a>
+            <a href="#recognition">Recognition</a>
             <a href="#beyond">Beyond work</a>
             <a href="#contact">Let's connect</a>
           </nav>
@@ -331,7 +334,7 @@
       <div class="wrap">
         <div class="section-heading">
           <span class="eyebrow">01 / My story</span>
-          <div><h2>Retail is where<br>my story starts.</h2><p class="section-intro">From my parents' stores to early cloud services and today's AI possibilities, the connection between people, business, and technology is the thread through my career.</p></div>
+          <div><h2 id="story-title">Retail is where<br>my story starts.</h2><p class="section-intro">From my parents' stores to early cloud services and today's AI possibilities, the connection between people, business, and technology is the thread through my career.</p></div>
         </div>
         <div class="story-grid">
           <article class="story-card">
@@ -359,7 +362,7 @@
       <div class="wrap">
         <div class="section-heading">
           <span class="eyebrow">02 / Work I'm proud of</span>
-          <div><h2>Curiosity is useful.<br>Building makes it real.</h2><p class="section-intro">I like getting beyond the conversation and into the work. Customer IQ is one expression of that mindset: applying AI to a practical account-team challenge.</p></div>
+          <div><h2 id="work-title">Curiosity is useful.<br>Building makes it real.</h2><p class="section-intro">I like getting beyond the conversation and into the work. Customer IQ is one expression of that mindset: applying AI to a practical account-team challenge.</p></div>
         </div>
         <article class="project">
           <div>
@@ -382,19 +385,42 @@
           </div>
         </article>
         <p class="work-footnote">From consulting on BPOS to building Customer IQ, I enjoy the work of turning a new technology into something people can use.</p>
-        <div class="recognition" aria-label="Selected professional recognition">
-          <article><span class="eyebrow">Microsoft / 2026</span><h3>FY26 Gold Club</h3><p>Recognition for strategic excellence and business impact.</p></article>
-          <article><span class="eyebrow">Amazon Web Services / 2019</span><h3>Specialist of the Year</h3><p>Recognized as a top contributor.</p></article>
-          <article><span class="eyebrow">Microsoft / 2017</span><h3>Platinum Club</h3><p>Outstanding Achiever award.</p></article>
+      </div>
+    </section>
+    <section class="section" id="recognition" aria-labelledby="recognition-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <span class="eyebrow">03 / Career milestones</span>
+          <div><h2 id="recognition-title">Big milestones.<br>Even better memories.</h2><p class="section-intro">Different companies. Different chapters. Three career highlights I'm proud of&mdash;and the reasons each one matters.</p></div>
         </div>
-        <a class="text-link" href="https://www.linkedin.com/in/mbooks">More experience and recognition on LinkedIn <span aria-hidden="true">&nearr;</span></a>
+        <div class="recognition">
+          <article>
+            <span class="eyebrow">Microsoft / 2026</span>
+            <h3>FY26 Gold Club</h3>
+            <p class="recognition-signal">Strategic excellence. Real impact.</p>
+            <p>Microsoft's Gold Club recognizes strategic excellence, transformative leadership, and business impact. Being part of that group is a significant milestone in my Microsoft career&mdash;and motivation to keep raising the bar.</p>
+          </article>
+          <article>
+            <span class="eyebrow">Amazon Web Services / 2019</span>
+            <h3>Specialist of the Year</h3>
+            <p class="recognition-signal">Customer impact. Full stop.</p>
+            <p>AWS named me Specialist of the Year for customer impact, rather than quota attainment. This one means a lot: it celebrates the difference the work made for customers, beyond the numbers on a scorecard.</p>
+          </article>
+          <article>
+            <span class="eyebrow">Microsoft / 2017</span>
+            <h3>Platinum Club<br>Outstanding Achiever</h3>
+            <p class="recognition-signal">Excellence worth celebrating.</p>
+            <p>Receiving Microsoft's Platinum Club Outstanding Achiever award was a defining moment in my career. It remains one of my proudest professional milestones&mdash;a big stage, and a memory that stays with me.</p>
+          </article>
+        </div>
+        <a class="text-link recognition-link" href="https://www.linkedin.com/in/mbooks">More experience and recognition on LinkedIn <span aria-hidden="true">&nearr;</span></a>
       </div>
     </section>
     <section class="section" id="beyond" aria-labelledby="beyond-title">
       <div class="wrap human">
         <div>
-          <span class="eyebrow">03 / Beyond the job title</span>
-          <h2>People first.<br>On and off the field.</h2>
+          <span class="eyebrow">04 / Beyond the job title</span>
+          <h2 id="beyond-title">People first.<br>On and off the field.</h2>
           <p>Outside work, I'm a husband, dad of three boys, and youth football coach. Coaching and community involvement are important parts of my life, not just footnotes to my career.</p>
           <p>My volunteer experience also includes supporting school technology, mentoring in Scouting, and animal-welfare fundraising and training.</p>
           <a class="text-link" href="https://www.linkedin.com/in/mbooks" style="margin-top:20px">The fuller picture on LinkedIn <span aria-hidden="true">&nearr;</span></a>
@@ -411,8 +437,8 @@
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
       <div class="wrap contact-grid">
         <div>
-          <span class="eyebrow">04 / Let's connect</span>
-          <h2>Good things start<br>with a conversation.</h2>
+          <span class="eyebrow">05 / Let's connect</span>
+          <h2 id="contact-title">Good things start<br>with a conversation.</h2>
           <p class="contact-copy">Retail and consumer goods. Cloud and AI. Customer IQ. Or simply a shared idea worth exploring. I'd be glad to connect.</p>
         </div>
         <div class="contact-links">
