@@ -207,7 +207,7 @@
         </label>
         <button type="submit" id="submit-button">View video</button>
       </form>
-      <p class="tip">Tip: Make it a fun game-night rule&mdash;skip password guessing and message Mike for the official passphrase.</p>
+      <p class="tip">Need the password? Message Mike Books at <a href="mailto:mbooks@outlook.com?subject=Walgreens%20video%20password">mbooks@outlook.com</a> or <a href="https://www.linkedin.com/in/mbooks">linkedin.com/in/mbooks</a>.</p>
       <p class="status" id="status" role="status" aria-live="polite"></p>
     </section>
 
@@ -220,8 +220,10 @@
     </section>
   </main>
   <script>
-    const PASSWORD_HASH = "de7b2b8384b81848fa58aef4ac6208b14f283d08c6a3f1090d32855d46fb8e74";
+    const PASSWORD_HASH = "27e7606035a83cf1036adfdd24ab3b0c1800d20699592a457366b3854145db97";
+    const MAX_ATTEMPTS = 3;
     const STORAGE_KEY = "walgreens-intelligence-platform-access";
+    let remainingAttempts = MAX_ATTEMPTS;
 
     const form = document.getElementById("password-form");
     const passwordInput = document.getElementById("password");
@@ -239,6 +241,13 @@
       }
       gate.hidden = true;
       player.hidden = false;
+    };
+
+    const lockAccess = () => {
+      passwordInput.disabled = true;
+      submitButton.disabled = true;
+      status.textContent = "Maximum attempts reached. Message Mike Books at mbooks@outlook.com or linkedin.com/in/mbooks for the password.";
+      status.classList.add("error");
     };
 
     const sha256 = async (value) => {
@@ -268,15 +277,22 @@
           showVideo();
           video.focus();
         } else {
-          status.textContent = "Incorrect password. Please try again.";
-          status.classList.add("error");
-          passwordInput.select();
+          remainingAttempts -= 1;
+          if (remainingAttempts <= 0) {
+            lockAccess();
+          } else {
+            status.textContent = `Incorrect password. ${remainingAttempts} attempt${remainingAttempts === 1 ? "" : "s"} remaining.`;
+            status.classList.add("error");
+            passwordInput.select();
+          }
         }
       } catch (error) {
         status.textContent = "This browser could not verify the password.";
         status.classList.add("error");
       } finally {
-        submitButton.disabled = false;
+        if (remainingAttempts > 0 && !passwordInput.disabled) {
+          submitButton.disabled = false;
+        }
       }
     });
   </script>
