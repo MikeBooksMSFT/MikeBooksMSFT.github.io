@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Customer IQ Post-Hackathon | Mike Books</title>
-  <meta name="description" content="Private access page for Customer IQ post-hackathon materials.">
+  <title>Private Access Page | Mike Books</title>
+  <meta name="description" content="Password-protected private access page.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://mikebooksmsft.github.io/customer-iq-post-hackathon/">
   <script>
@@ -186,8 +186,8 @@
       <a href="../">Go to main site</a>
     </nav>
     <p class="eyebrow">Private access</p>
-    <h1>Customer IQ post-hackathon.</h1>
-    <p>Enter the password to continue.</p>
+    <h1 id="page-title">Welcome.</h1>
+    <p id="intro-copy">Enter the password to continue.</p>
 
     <section class="gate" id="gate">
       <form id="password-form">
@@ -197,16 +197,17 @@
         </label>
         <button type="submit" id="submit-button">Continue</button>
       </form>
-      <p class="tip">Need the password? Contact me at <a href="mailto:michaelbooks@microsoft.com?subject=Customer%20IQ%20post-hackathon%20password">michaelbooks@microsoft.com</a>.</p>
+      <p class="tip">Need the password? Contact me at <a id="contact-link" href="mailto:michaelbooks@microsoft.com?subject=Private%20access%20password">michaelbooks@microsoft.com</a>.</p>
       <p class="status" id="status" role="status" aria-live="polite"></p>
     </section>
 
     <section class="content" id="content" hidden tabindex="-1">
-      <p>Access granted.</p>
-      <p style="margin-top: 12px;">You are now viewing the protected Customer IQ post-hackathon page.</p>
+      <p id="access-copy">Access granted.</p>
+      <p id="detail-copy" style="margin-top: 12px;">You are now viewing this protected page.</p>
     </section>
   </main>
   <script>
+    const EXPERIENCE_NAME = "Customer IQ post-hackathon";
     const PASSWORD_HASH = "a56f3dbc3053cc78282ebb4360025187945043453f94099157496b76530a404d";
     const MAX_ATTEMPTS = 3;
     const STORAGE_KEY = "customer-iq-post-hackathon-access";
@@ -218,8 +219,40 @@
     const status = document.getElementById("status");
     const gate = document.getElementById("gate");
     const content = document.getElementById("content");
+    const pageTitle = document.getElementById("page-title");
+    const introCopy = document.getElementById("intro-copy");
+    const contactLink = document.getElementById("contact-link");
+    const accessCopy = document.getElementById("access-copy");
+    const detailCopy = document.getElementById("detail-copy");
+    const pageDescription = document.querySelector('meta[name="description"]');
+
+    const revealPrivateContent = () => {
+      document.title = `${EXPERIENCE_NAME} | Mike Books`;
+      if (pageDescription) {
+        pageDescription.setAttribute(
+          "content",
+          `Private access page for ${EXPERIENCE_NAME} materials.`,
+        );
+      }
+      if (pageTitle) {
+        pageTitle.textContent = `${EXPERIENCE_NAME}.`;
+      }
+      if (introCopy) {
+        introCopy.textContent = "Enter the password to continue.";
+      }
+      if (contactLink) {
+        contactLink.href = `mailto:michaelbooks@microsoft.com?subject=${encodeURIComponent(`${EXPERIENCE_NAME} password`)}`;
+      }
+      if (accessCopy) {
+        accessCopy.textContent = "Access granted.";
+      }
+      if (detailCopy) {
+        detailCopy.textContent = `You are now viewing the protected ${EXPERIENCE_NAME} page.`;
+      }
+    };
 
     const showContent = () => {
+      revealPrivateContent();
       gate.hidden = true;
       content.hidden = false;
       content.focus();
