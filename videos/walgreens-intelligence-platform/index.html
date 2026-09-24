@@ -207,7 +207,7 @@
         </label>
         <button type="submit" id="submit-button">View video</button>
       </form>
-      <p class="tip">Need the password? Message Mike Books at <a href="mailto:michaelbooks@microsoft.com?subject=Walgreens%20video%20password">michaelbooks@microsoft.com</a>.</p>
+      <p class="tip">Need the password? Contact me at <a href="mailto:michaelbooks@microsoft.com?subject=Walgreens%20video%20password">michaelbooks@microsoft.com</a>.</p>
       <p class="status" id="status" role="status" aria-live="polite"></p>
     </section>
 
@@ -220,7 +220,7 @@
     </section>
   </main>
   <script>
-    const PASSWORD_HASH = "27e7606035a83cf1036adfdd24ab3b0c1800d20699592a457366b3854145db97";
+    const PASSWORD_HASH = "a56f3dbc3053cc78282ebb4360025187945043453f94099157496b76530a404d";
     const MAX_ATTEMPTS = 3;
     const STORAGE_KEY = "walgreens-intelligence-platform-access";
     let remainingAttempts = MAX_ATTEMPTS;
@@ -246,7 +246,7 @@
     const lockAccess = () => {
       passwordInput.disabled = true;
       submitButton.disabled = true;
-      status.textContent = "Maximum attempts reached. Message Mike Books at michaelbooks@microsoft.com for the password.";
+      status.textContent = "Maximum attempts reached. Contact me at michaelbooks@microsoft.com for the password.";
       status.classList.add("error");
     };
 
